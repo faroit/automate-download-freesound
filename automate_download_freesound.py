@@ -192,6 +192,7 @@ def simulate_download(sound, download_path, user, pass_w, args):
 
     download_count = 0
     driver = setup(full_path)
+    driver.implicitly_wait(1.0)
     search_subject = sound
     try:
 
@@ -206,8 +207,7 @@ def simulate_download(sound, download_path, user, pass_w, args):
         if args.advanced_filter:
             # Advanced search for only search subject in tags or file name
             driver = advanced_filtering(driver)
-        driver.implicitly_wait(1)
-
+        
         while True:
             # Gather all links on the page
             links = driver.find_elements_by_class_name("title")
